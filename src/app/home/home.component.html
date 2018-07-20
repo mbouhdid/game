@@ -1,0 +1,22 @@
+<div class="content" [ngClass]="{'mask': winner}">
+  <div class="list">
+      <img src="http://championmath.free.fr/allumon.gif" *ngFor="let c of counter; let i=index" />
+  </div>
+  <div class="gamers">
+      <div [ngClass] = "{'inactif':idInactifPlayer == gamer.id}" class="gamer" *ngFor="let gamer of gamers">
+        <div class="name">{{gamer.name}}</div>
+        <div class="buttons">
+          <button class="button" (click)="delete(1, gamer.id)">1</button>
+          <button class="button" (click)="delete(2, gamer.id)">2</button>
+          <button class="button" (click)="delete(3, gamer.id)">3</button>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="pop-up" *ngIf="winner">
+  <div>WINNER: {{winner.name}}</div>
+  <div class="btn">
+    <button class="btn-validate" (click)="restartGame()">OK</button>
+  </div>
+</div>
